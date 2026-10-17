@@ -1,0 +1,28 @@
+?QLite format 3@  .??
+j??
+ !?FctableresumesresumesCREATE TABLE resumes (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                filename TEXT,
+                extracted_name TEXT,
+                extracted_email TEXT,
+                extracted_phone TEXT,
+                skills TEXT,
+                education TEXT,
+                experience TEXT,
+                summary TEXT,
+                suggested_role TEXT,
+                uploaded_at TEXT DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY(user_id) REFERENCES users(id)
+            )P++Ytablesqlite_sequencesqlite_sequenceCREATE TABLE sqlite_sequence(name,seq)?c?%tableusersusersCREATE TABLE users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                username TEXT UNIQUE NOT NULL,
+                email TEXT UNIQUE NOT NULL,
+                password TEXT NOT NULL,
+                profile_image BLOB,
+                preferred_location TEXT DEFAULT 'All Over India',
+                suggested_role TEXT DEFAULT '',
+                last_login TEXT,
+                created_at TEXT DEFAULT CURRENT_TIMESTAMP
+            ))=indexsqlite_autoindex_users_2users)=indexsqlite_autoindex_users_1users
+
