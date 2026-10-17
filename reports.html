@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}Reports{% endblock %}{% block content %}
+<div class="page-head"><h1>My Resume Reports</h1><p>Saved resume analyses.</p></div>
+{% if not resumes %}<div class="panel">No reports yet. <a href="{{ url_for('upload') }}">Upload a resume</a> to get started.</div>{% endif %}
+{% for r in resumes %}<div class="panel mb-3"><div class="d-flex justify-content-between gap-3"><div><h5>{{ r.filename }}</h5><p class="muted mb-1">{{ r.uploaded_at }}</p><p><b>Name:</b> {{ r.extracted_name or 'N/A' }} · <b>Email:</b> {{ r.extracted_email or 'N/A' }}</p><p><b>Role:</b> {{ r.suggested_role or 'N/A' }}</p><p><b>Skills:</b> {{ r.skills or 'N/A' }}</p><p><b>Education:</b> {{ r.education or 'N/A' }}</p><p><b>Summary:</b> {{ r.summary or 'N/A' }}</p></div><form method="post" action="{{ url_for('remove_resume', resume_id=r.id) }}" onsubmit="return confirm('Delete this report?')"><button class="btn btn-outline-danger btn-sm">Delete</button></form></div></div>{% endfor %}
+{% endblock %}

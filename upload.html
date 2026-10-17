@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block title %}Upload Resume{% endblock %}{% block content %}
+<div class="page-head"><h1>Upload Resume</h1><p>We'll extract contact details, skills, education and experience, then suggest relevant roles.</p></div>
+<div class="panel"><form method="post" enctype="multipart/form-data"><label class="form-label">Resume file</label><input class="form-control mb-3" type="file" name="resume" accept=".pdf,.docx,.txt" required>
+<label class="form-label">Preferred job location</label><select class="form-select mb-3" name="location">{% for loc in locations %}<option>{{ loc }}</option>{% endfor %}</select><button class="btn btn-primary btn-lg">Analyze Resume</button></form></div>{% endblock %}

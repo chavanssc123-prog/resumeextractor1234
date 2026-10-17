@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}Profile{% endblock %}{% block content %}
+<div class="page-head"><h1>Profile</h1><p>Set your preferred location and suggested role.</p></div><div class="panel"><form method="post" enctype="multipart/form-data">
+<label class="form-label">Preferred location</label><select class="form-select mb-3" name="preferred_location">{% for loc in locations %}<option {% if profile.preferred_location == loc %}selected{% endif %}>{{ loc }}</option>{% endfor %}</select>
+<label class="form-label">Suggested role</label><input class="form-control mb-3" name="suggested_role" value="{{ profile.suggested_role or '' }}">
+<label class="form-label">Profile photo (optional)</label><input class="form-control mb-3" type="file" name="profile_image" accept="image/*"><button class="btn btn-primary">Save profile</button></form></div>{% endblock %}

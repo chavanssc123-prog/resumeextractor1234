@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block content %}
+<div class="hero"><span class="pill">RESUME ANALYSIS · JOB MATCHING</span><h1>Find the right role for your skills.</h1><p>Upload a PDF, DOCX or TXT resume to extract skills, predict a role and match it with sample job listings.</p><a class="btn btn-light btn-lg" href="{{ url_for('upload') }}">Upload Resume →</a></div>
+<div class="row g-3 mt-2"><div class="col-md-4"><div class="metric"><h2>{{ resumes|length }}</h2><p>Saved reports</p></div></div><div class="col-md-4"><div class="metric"><h2>{{ profile.preferred_location or 'All Over India' }}</h2><p>Preferred location</p></div></div><div class="col-md-4"><div class="metric"><h2>{{ profile.suggested_role or 'Not set' }}</h2><p>Suggested role</p></div></div></div>
+{% if resumes %}<h3 class="mt-4">Recent reports</h3><div class="table-responsive"><table class="table"><thead><tr><th>File</th><th>Predicted role</th><th>Uploaded</th></tr></thead><tbody>{% for r in resumes[:5] %}<tr><td>{{ r.filename }}</td><td>{{ r.suggested_role or 'N/A' }}</td><td>{{ r.uploaded_at }}</td></tr>{% endfor %}</tbody></table></div>{% endif %}
+{% endblock %}
